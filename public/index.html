@@ -1,0 +1,100 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./main.css">
+    <title>Users List</title>
+</head>
+
+<body>
+    <h1>VueJS - Home work</h1>
+
+    <div id="el">
+        <users-list inline-template>
+            <table class="table">
+                <caption>Общее количество пользователей - <b>{{usersCount}}</b></caption>
+                <thead class="thead-dark">
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">EDIT Profile</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Picture</th>
+                    <th scope="col">age</th>
+                    <th scope="col">accessLevel</th>
+                    <th scope="col">firstName</th>
+                    <th scope="col">lastName</th>
+                    <th scope="col">company</th>
+                    <th scope="col">email</th>
+                    <th scope="col">phone</th>
+                    <th scope="col">address</th>
+                    <th scope="col">about</th>
+                    <th scope="col">registered</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="user in users">
+                        <td>{{user.id}}</td>
+                        <td><a :href="`./user-form.html?user=${user.id}`">EDIT</a></td>
+                        <td>{{user.balance}}</td>
+                        <td>
+                            <img v-if='user.picture' :src="user.picture" alt="" />
+                            <span v-else>no image</span>
+                        </td>    
+                        <td>{{user.age}}</td>
+                        <td>{{user.accessLevel}}</td>
+                        <td>{{user.firstName}}</td>
+                        <td>{{user.lastName}}</td>
+                        <td>{{user.company}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.phone}}</td>
+                        <td>{{user.address}}</td>
+                        <td>{{user.about}}</td>
+                        <td>{{user.registered}}</td>
+                    </tr>
+                </tbody>        
+            </table>
+        </users-list>
+    </div>
+
+    <script>
+        let users = {
+            name: 'users-list',
+            data: function () {
+                return {
+                    users: []
+                }
+            },
+            created: function () {
+                this.loadUsers();
+            },
+            computed: {
+                usersCount: function () {
+                    return this.users.length;
+                }
+            },
+            methods: {
+                async loadUsers () {
+                    let response = await fetch('http://localhost:3000/users');
+                    let userList = await response.json();
+                    this.users = userList;
+
+                    console.log('users loaded!');
+                }
+            }
+        }
+
+        new Vue({
+            el: '#el',
+            components: {
+                'users-list': users
+            }
+        }) 
+    </script>
+</body>
+
+</html>

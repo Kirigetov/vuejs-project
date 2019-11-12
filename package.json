@@ -1,0 +1,23 @@
+{
+  "name": "nodeserver",
+  "version": "1.0.0",
+  "description": "simple server",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kirigetov/vuejs-project.git"
+  },
+  "author": "Max",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kirigetov/vuejs-project/issues"
+  },
+  "homepage": "https://github.com/Kirigetov/vuejs-project#readme",
+  "dependencies": {
+    "node-static": "^0.7.11"
+  }
+}
