@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>Edit User's Profile</h2>
-    <form>
+    <form ref="userForm">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input
@@ -53,8 +53,6 @@
           placeholder="Company"
         />
       </div>
-
-      <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
     <pre>{{localUser}}</pre>

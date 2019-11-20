@@ -18,11 +18,11 @@
           <router-link tag='li' class="nav-item" to="/" exact>
             <a class="nav-link">Home</a>
           </router-link>
-          <router-link tag='li' class="nav-item" to="/users" exact>
+          <router-link tag='li' class="nav-item" to="/users">
             <a class="nav-link">Users list</a>
           </router-link>
-          <router-link tag='li' class="nav-item" to="/users/:id" exact>
-            <a class="nav-link">Edit user</a>
+          <router-link tag='li' class="nav-item" to="/add">
+            <a class="nav-link">Add user</a>
           </router-link>
         </ul>
       </div>
