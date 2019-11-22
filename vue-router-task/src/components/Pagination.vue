@@ -1,17 +1,23 @@
 <template>
   <div>
     <ul class="pagination">
-      <router-link class="page-item" tag="li" to="/">
+      <li class="page-item active" @click="backTo">
         <a class="page-link">Previous</a>
-      </router-link>
+      </li>
 
-      <router-link v-for="page in pages" class="page-item" tag="li" :to="'page/' + page" :key="page">
+      <li 
+        v-for="page in pages" 
+        class="page-item" 
+        :class="{ active: currentPage === page }"
+        :key="page"
+        @click="$emit('move', page)"
+      >
         <a class="page-link">{{ page }}</a>
-      </router-link>
+      </li>
 
-      <router-link class="page-item" tag="li" to="/">
+      <li class="page-item active" @click="forwardTo">
         <a class="page-link">Next</a>
-      </router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -19,10 +25,30 @@
 <script>
 export default {
   name: 'Pagination',
+  model: {
+    event: 'move',
+    prop: 'currentPage'
+  },
   props: {
     pages: {
       type: Number,
       required: true
+    },
+    currentPage: {
+      type: Number,
+      required: true
+    }
+  },
+  methods: {
+    backTo(){
+      if(this.currentPage !== 1) {
+        this.$emit('move', --this.currentPage)
+      }
+    },
+    forwardTo(){
+      if(this.currentPage < this.pages) {
+        this.$emit('move', ++this.currentPage)
+      }
     }
   }
 }

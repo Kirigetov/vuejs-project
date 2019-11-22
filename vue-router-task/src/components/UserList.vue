@@ -4,7 +4,7 @@
       <tr>
         <th scope="col">ID</th>
         <th scope="col">Balance</th>
-        <th scope="col">Access Level</th>
+        <th scope="col">Status</th>
         <th scope="col">FirstName</th>
         <th scope="col">LastName</th>
         <th scope="col">Company</th>

@@ -2,14 +2,8 @@
   <div>
     <h2>Список пользователей</h2>
 
-    <div>
-      Пользователей в базе - {{ userTotal }}
-    </div>
+    <div>Пользователей в базе - {{ userTotal }}</div>
 
-    <div>
-      Всего страниц - {{ pages }}
-    </div>
-    
     <div class="form-group">
       <input type="number" class="form-control" v-model="usersPerPage" />
 
@@ -19,10 +13,9 @@
     <div v-if="!users.length">Загрузка...</div>
     <user-list v-else :users="usersListForPage" @delete="deleteUser" />
 
-    <pagination :pages='pages'></pagination>
 
-    <router-view></router-view>
-
+    <div class="form-block"><strong>Выбрана страница {{currentPage}}</strong></div>
+    <pagination v-model="currentPage" :pages="pages"></pagination>
 
   </div>
 </template>
@@ -43,7 +36,8 @@ export default {
       users: [],
       usersPerPage: 5,
       usersListForPage: [],
-      pages: 1
+      pages: 1,
+      currentPage: 1
     }
   },
   computed: {
@@ -56,14 +50,17 @@ export default {
   },
   methods: {
     usersToShow() {
-      this.usersListForPage = this.users.slice(0, this.usersPerPage);
-      this.pages = Math.ceil(this.users.length / this.usersPerPage);
+      let firstItemIndex = (this.currentPage * this.usersPerPage) - this.usersPerPage
+      let lastItemIndex = this.currentPage * this.usersPerPage
+
+      this.usersListForPage = this.users.slice(firstItemIndex, lastItemIndex)
+      this.pages = Math.ceil(this.userTotal / this.usersPerPage)
     },
     loadUsers() {
       axios
         .get('http://localhost:3004/users/')
         .then(response => {
-          this.users = response.data;
+          this.users = response.data
           this.usersToShow()
         })
         .catch(error => {
@@ -75,7 +72,8 @@ export default {
     }
   },
   watch: {
-    usersPerPage: 'usersToShow'
-  },
+    usersPerPage: 'usersToShow',
+    currentPage: 'usersToShow'
+  }
 }
 </script>

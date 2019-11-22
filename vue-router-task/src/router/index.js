@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
-import Pagination from '@/components/Pagination.vue'
 
 Vue.use(VueRouter)
 
@@ -21,13 +20,7 @@ const routes = [
   },
   {
     path: '/users',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Users.vue'),
-    children: [
-      {
-        path: 'page',
-        component: Pagination
-      }
-    ]
+    component: () => import(/* webpackChunkName: "about" */ '../views/Users.vue')
   },
   {
     path: '/edit/:id',
