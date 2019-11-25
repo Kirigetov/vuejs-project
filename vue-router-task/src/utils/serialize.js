@@ -29,7 +29,7 @@ export default function(form) {
 
     // Convert field data to a query string
     else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
-        serialized[field.name] = field.value
+      serialized[field.name] = field.value
     }
   }
 

@@ -87,7 +87,7 @@
       "picture": "http://placehold.it/128x128",
       "age": 36,
       "accessLevel": "user",
-      "firstName": "Saundra",
+      "firstName": "Saundra!",
       "lastName": "Wolf",
       "company": "INSOURCE",
       "email": "saundra.wolf@insource.biz",
@@ -98,19 +98,19 @@
     },
     {
       "id": 7,
-      "isActive": false,
-      "balance": "$2,606.29",
+      "isActive": true,
+      "balance": "$2,944.34",
       "picture": "http://placehold.it/128x128",
-      "age": 23,
+      "age": 36,
       "accessLevel": "user",
-      "firstName": "Felecia",
-      "lastName": "Pitts",
-      "company": "WRAPTURE",
-      "email": "felecia.pitts@wrapture.org",
-      "phone": "+7 (911) 523-2949",
-      "address": "677 Chapel Street, Connerton, Massachusetts, 5699",
-      "about": "Ad ullamco duis proident sint aute adipisicing cupidatat officia.",
-      "registered": "13.05.2018"
+      "firstName": "Saundra",
+      "lastName": "Wolf",
+      "company": "INSOURCE",
+      "email": "saundra.wolf@insource.biz",
+      "phone": "+7 (933) 568-3912",
+      "address": "364 Martense Street, Grenelefe, Texas, 3837",
+      "about": "In cillum esse cillum veniam exercitation esse labore et anim pariatur non sit.",
+      "registered": "12.04.2019"
     },
     {
       "id": 8,
@@ -169,12 +169,15 @@
       "id": 11
     },
     {
-      "email": "tttt@test.com",
-      "firstName": "skskskskk",
-      "lastName": "kskksksks",
-      "phone": "03030300303",
-      "company": "sksksksks",
       "id": 12
+    },
+    {
+      "email": "jajjaj@test.com",
+      "firstName": "sjnsjvndskvn",
+      "lastName": "jsjsjjrrooqoq",
+      "phone": "393939939399393",
+      "company": "jwiiwiiwiiw",
+      "id": 13
     }
   ]
 }

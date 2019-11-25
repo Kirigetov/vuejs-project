@@ -1,7 +1,9 @@
 <template>
   <div>
-    <user-form v-model="user"></user-form>
-    <button class="btn btn-primary" type="button" @click="addUser">Add new user</button>
+      <div v-if="!user">Загрузка...</div>
+      <user-form v-else v-model="user">
+        <button class="btn btn-primary" type="button" @click="addUser">Add new user</button>
+      </user-form>
   </div>
 </template>
 

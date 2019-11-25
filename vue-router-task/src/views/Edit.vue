@@ -40,9 +40,10 @@ export default {
       })
     },
     saveUser() {
-      Axios.put(`http://localhost:3004/users/${this.id}`, this.user).then(response => {
-        console.log(response)
-      })
+      Axios.patch(`http://localhost:3004/users/${this.id}`, this.user)
+      // .then(response => {
+      //   console.log(response)
+      // })
     }
   }
 }

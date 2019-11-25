@@ -5,11 +5,11 @@
         <a class="page-link">Previous</a>
       </li>
 
-      <li 
-        v-for="page in pages" 
-        class="page-item" 
-        :class="{ active: currentPage === page }"
+      <li
+        v-for="page in pages"
         :key="page"
+        class="page-item"
+        :class="{ active: currentPage === page }"
         @click="$emit('move', page)"
       >
         <a class="page-link">{{ page }}</a>
@@ -21,13 +21,18 @@
     </ul>
   </div>
 </template>
- 
+
 <script>
 export default {
   name: 'Pagination',
   model: {
     event: 'move',
     prop: 'currentPage'
+  },
+  data() {
+    return {
+      localCurrentPage: null
+    }
   },
   props: {
     pages: {
@@ -39,15 +44,18 @@ export default {
       required: true
     }
   },
+  created() {
+    this.localCurrentPage = this.currentPage
+  },
   methods: {
-    backTo(){
-      if(this.currentPage !== 1) {
-        this.$emit('move', --this.currentPage)
+    backTo() {
+      if (this.currentPage !== 1) {
+        this.$emit('move', --this.localCurrentPage)
       }
     },
-    forwardTo(){
-      if(this.currentPage < this.pages) {
-        this.$emit('move', ++this.currentPage)
+    forwardTo() {
+      if (this.currentPage < this.pages) {
+        this.$emit('move', ++this.localCurrentPage)
       }
     }
   }

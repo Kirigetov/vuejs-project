@@ -28,11 +28,9 @@
         <td>{{ user.phone }}</td>
         <td>{{ user.registered }}</td>
         <td>
-          <button
-            class="btn btn-sm btn-primary"
-            type="button"
-            @click="$emit('delete', user.id)"
-          >delete</button>
+          <button class="btn btn-sm btn-primary" type="button" @click="$emit('delete', user.id)">
+            delete
+          </button>
         </td>
       </tr>
     </tbody>
