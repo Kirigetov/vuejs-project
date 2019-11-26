@@ -24,6 +24,9 @@
           <router-link tag="li" class="nav-item" to="/add">
             <a class="nav-link">Add user</a>
           </router-link>
+          <router-link tag="li" class="nav-item" to="/contacts">
+            <a class="nav-link">Contacts</a>
+          </router-link>
         </ul>
       </div>
     </nav>

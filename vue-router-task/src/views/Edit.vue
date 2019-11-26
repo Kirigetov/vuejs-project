@@ -1,14 +1,18 @@
 <template>
   <div>
     <div v-if="!user">Загрузка...</div>
-    <user-form v-else v-model="user"></user-form>
+    <user-form v-else v-model="user">
+      <template v-slot:action="{ user }">
+        <button type="button" class="btn btn-success" @click="saveUser">Save</button>
+        <button class="btn btn-primary" type="button" @click="deleteUser">delete</button>
+      </template>
+    </user-form>
   </div>
 </template>
 
 <script>
 import UserForm from '@/components/UserForm.vue'
-import Axios from 'axios'
-import _ from 'lodash'
+import axios from 'axios'
 
 export default {
   name: 'EditUserPage',
@@ -25,25 +29,22 @@ export default {
       return this.$route.params.id
     }
   },
-  watch: {
-    user: function(newVal, oldVal) {
-      if (!_.isEqual(newVal, oldVal)) this.saveUser()
-    }
-  },
   created() {
     this.loadUser()
   },
   methods: {
     loadUser() {
-      Axios.get(`http://localhost:3004/users/${this.id}`).then(response => {
+      axios.get(`http://localhost:3004/users/${this.id}`).then(response => {
         this.user = response.data
       })
     },
     saveUser() {
-      Axios.patch(`http://localhost:3004/users/${this.id}`, this.user)
-      // .then(response => {
-      //   console.log(response)
-      // })
+      axios.patch(`http://localhost:3004/users/${this.id}`, this.user).then(() => {
+        this.$router.push('/users')
+      })
+    },
+    deleteUser() {
+      axios.delete(`http://localhost:3004/users/${this.id}`).then(() => this.$router.push('/users'))
     }
   }
 }

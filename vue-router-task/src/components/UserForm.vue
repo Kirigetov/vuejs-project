@@ -64,6 +64,8 @@
         </li>
       </ul>
     </slot>
+
+    <slot name="action" :user="user"></slot>
   </div>
 </template>
 

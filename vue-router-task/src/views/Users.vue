@@ -23,7 +23,7 @@
     </div>
 
     <div v-if="!users.length">Загрузка...</div>
-    <user-list v-else :users="usersListForPage" @delete="deleteUser" />
+    <user-list v-else :users="usersListForPage" />
 
     <div class="form-block">
       <strong>Выбрана страница {{ currentPage }}</strong>
@@ -86,9 +86,6 @@ export default {
         .catch(error => {
           console.error(error)
         })
-    },
-    deleteUser(id) {
-      axios.delete(`http://localhost:3004/users/${id}`).then(() => this.loadUsers())
     },
     showSearchResult(searchresult) {
       if (searchresult.length > 0) {

@@ -25,6 +25,7 @@ export default {
     addUser() {
       Axios.post(`http://localhost:3004/users/`, this.user).then(response => {
         console.log(response)
+        this.$router.push('/users')
       })
     }
   }
