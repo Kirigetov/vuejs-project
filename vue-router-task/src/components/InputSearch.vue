@@ -1,8 +1,9 @@
 <template>
-  <div>
+  <div class="form-group">
     <input
       type="text"
       name="users-search"
+      class="form-control"
       :value="search"
       @input="$emit('input', $event.target.value)"
     />

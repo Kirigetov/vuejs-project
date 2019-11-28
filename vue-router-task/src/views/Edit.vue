@@ -3,8 +3,8 @@
     <div v-if="!user">Загрузка...</div>
     <user-form v-else v-model="user">
       <template v-slot:action="{ user }">
+        <button type="button" class="btn btn-danger" @click="deleteUser">delete</button>
         <button type="button" class="btn btn-success" @click="saveUser">Save</button>
-        <button class="btn btn-primary" type="button" @click="deleteUser">delete</button>
       </template>
     </user-form>
   </div>
@@ -49,3 +49,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  .btn {
+    margin-right: 20px
+  }
+</style>

@@ -52,6 +52,30 @@
           placeholder="Company"
         />
       </div>
+      <div class="form-group">
+        <label for="exampleCheckboxisActive">Active</label>
+        <div>
+          <input type="checkbox" id="exampleCheckboxisActive" v-model="localUser.isActive" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputRegistered">Registered</label>
+
+        <datepicker
+          v-model="localUser.registered"
+        >
+        </datepicker>
+        <!-- <input id="exampleInputRegistered" v-model="localUser.registered" class="form-control" /> -->
+      </div>
+      <div class="form-group">
+        <label for="exampleTextarea">About</label>
+        <input
+          id="exampleTextarea"
+          v-model="localUser.about"
+          class="form-control"
+          placeholder="About"
+        />
+      </div>
     </form>
 
     <slot>
@@ -71,6 +95,7 @@
 
 <script>
 import axios from 'axios'
+import datepicker from '@/components/datePicker.vue'
 
 export default {
   name: 'UserForm',
@@ -83,6 +108,9 @@ export default {
       type: Object,
       required: true
     }
+  },
+  components: {
+    datepicker
   },
   data() {
     return {
@@ -126,3 +154,10 @@ export default {
   }
 }
 </script>
+
+<style>
+  input[type="radio"], input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+  }
+</style>
