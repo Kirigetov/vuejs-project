@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div v-if="!user">Загрузка...</div>
-    <user-form v-else v-model="user">
-      <template v-slot:action="{ user }">
-        <button type="button" class="btn btn-danger" @click="deleteUser">delete</button>
-        <button type="button" class="btn btn-success" @click="saveUser">Save</button>
-      </template>
-    </user-form>
+    <ValidationObserver ref="validationObserver">
+      <div v-if="!user">Загрузка...</div>
+      <user-form v-else v-model="user">
+        <template v-slot:action="{ user }">
+          <button type="button" class="btn btn-danger" @click="deleteUser">delete</button>
+          <button type="button" class="btn btn-success" @click="saveUser">Save</button>
+        </template>
+      </user-form>
+    </ValidationObserver>
   </div>
 </template>
 
@@ -38,7 +40,14 @@ export default {
         this.user = response.data
       })
     },
-    saveUser() {
+    async saveUser() {
+      const isValid = await this.$refs.validationObserver.validate();
+      
+      if(!isValid) {
+        alert("Заполните все поля!")
+        return
+      }
+
       axios.patch(`http://localhost:3004/users/${this.id}`, this.user).then(() => {
         this.$router.push('/users')
       })
@@ -51,7 +60,7 @@ export default {
 </script>
 
 <style>
-  .btn {
-    margin-right: 20px
-  }
+.btn {
+  margin-right: 20px;
+}
 </style>

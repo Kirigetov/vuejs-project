@@ -30,7 +30,7 @@
       "phone": "+7 (819) 600-2760",
       "address": "384 Danforth Street, Oretta, South Carolina, 8799",
       "about": "Ea proident nostrud quis ut ut adipisicing pariatur minim anim ex.",
-      "registered": "04.03.2014"
+      "registered": "2014-01-09"
     },
     {
       "id": 3,
@@ -45,8 +45,8 @@
       "email": "joanne.mack@retrack.me",
       "phone": "+7 (998) 459-3205",
       "address": "646 Abbey Court, Nadine, New Hampshire, 9552",
-      "about": "Lorem nostrud commodo esse ad labore cupidatat ut aliqua ad esse ullamco.",
-      "registered": "20.09.2014"
+      "about": "<blockquote>Lorem <u>nostrud</u> <u><b>commodo </b></u>esse ad labore <i><u>cupidatat </u>ut aliqua ad essess!</i></blockquote>",
+      "registered": "2014-01-15"
     },
     {
       "id": 4,
@@ -58,7 +58,7 @@
       "firstName": "aaaaaaaaa",
       "lastName": "bbbbbbb",
       "company": "CINASTER",
-      "email": "gwen.burke@cinaster.io",
+      "email": "skkss@test.com",
       "phone": "+7 (803) 459-3037",
       "address": "315 Fanchon Place, Welda, Connecticut, 6796",
       "about": "Magna esse eiusmod tempor pariatur consectetur aliquip.",

@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="pagination">
-      <li class="page-item active" @click="backTo">
+      <li class="page-item active page-item--previous" @click="backTo">
         <a class="page-link">Previous</a>
       </li>
 
@@ -15,7 +15,7 @@
         <a class="page-link">{{ page }}</a>
       </li>
 
-      <li class="page-item active" @click="forwardTo">
+      <li class="page-item active page-item--next" @click="forwardTo">
         <a class="page-link">Next</a>
       </li>
     </ul>
@@ -61,3 +61,13 @@ export default {
   }
 }
 </script>
+
+<style>
+  .page-item--previous {
+    margin-right: 5px;
+  }
+
+  .page-item--next {
+    margin-left: 5px
+  }
+</style>

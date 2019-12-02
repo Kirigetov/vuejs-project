@@ -2,20 +2,27 @@
   <div>
     <h2>Edit User's Profile</h2>
     <form ref="userForm">
-      <div class="form-group">
-        <label for="exampleInputEmail1">Email address</label>
-        <input
-          id="exampleInputEmail1"
-          v-model="localUser.email"
-          type="email"
-          class="form-control"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-        />
-        <small id="emailHelp" class="form-text text-muted"
-          >We'll never share your email with anyone else.</small
-        >
-      </div>
+      <ValidationProvider name="Email" rules="email|required" v-slot="{ errors, invalid }">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input
+            id="exampleInputEmail1"
+            v-model="localUser.email"
+            type="email"
+            class="form-control"
+            :class="{'is-invalid': invalid}"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your email with anyone else.</small
+          >
+
+          <span class="help-text text-danger" v-if="errors.length > 0">
+            {{ errors[0] }}
+          </span>
+        </div>
+      </ValidationProvider>
       <div class="form-group">
         <label for="exampleInputfirstname">FirstName</label>
         <input
@@ -61,20 +68,12 @@
       <div class="form-group">
         <label for="exampleInputRegistered">Registered</label>
 
-        <datepicker
-          v-model="localUser.registered"
-        >
-        </datepicker>
-        <!-- <input id="exampleInputRegistered" v-model="localUser.registered" class="form-control" /> -->
+        <datepicker v-model="localUser.registered" />
       </div>
+
       <div class="form-group">
         <label for="exampleTextarea">About</label>
-        <input
-          id="exampleTextarea"
-          v-model="localUser.about"
-          class="form-control"
-          placeholder="About"
-        />
+        <markdown v-model="localUser.about" />
       </div>
     </form>
 
@@ -95,7 +94,6 @@
 
 <script>
 import axios from 'axios'
-import datepicker from '@/components/datePicker.vue'
 
 export default {
   name: 'UserForm',
@@ -110,7 +108,8 @@ export default {
     }
   },
   components: {
-    datepicker
+    datepicker: () => import(/* webpackChunkName: "datepicker" */ './DatePicker.vue'),
+    markdown: () => import(/* webpackChunkName: "markdown" */ './MarkdownEditor.vue')
   },
   data() {
     return {
@@ -156,8 +155,9 @@ export default {
 </script>
 
 <style>
-  input[type="radio"], input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-  }
+input[type='radio'],
+input[type='checkbox'] {
+  width: 20px;
+  height: 20px;
+}
 </style>
